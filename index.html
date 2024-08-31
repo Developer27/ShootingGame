@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+
+    }
+  </style>
+
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+<div class="app-wrapper" id="app-wrapper">
+  <div class="hidden" id="mainGame">
+    <div class="fixed w-full flex justify-between z-10">
+      <audio loop="true" id='audioPlayer' hidden="true" controls>
+        <source src="./public/bgMusic.mp3" />
+      </audio>
+      <audio id='shootSoundPlayer' hidden="true" controls>
+        <source src="./public/ShootingSound-[AudioTrimmer.com](1).mp3" />
+      </audio>
+
+
+      <div class=" text-white m-2 select-none">
+        <div class="text-white m-2 select-none"><span>Score: </span><span id="score">0</span></div>
+        <div class="text-white m-2 select-none"><span>Enemies destroyed: </span><span id="enemiesDestroyed">0</span></div>
+      </div>
+
+      <button id="pauseBtn" class="w-16 h-10 m-3  bg-white rounded hover:bg-gray-200">Mute</button>
+    </div>
+
+
+    <div id="modal" class="fixed inset-0 justify-center flex items-center ">
+      <div class="bg-white max-w-lg w-full p-6 text-center">
+        <h1 id="modalScore" class="text-4xl font-bold leading-none select-none">0</h1>
+        <p class="text-sm text-gray-700 select-none">Points</p>
+        <button id='startBtn' class="bg-blue-500 text-white w-full rounded-full p-3 mt-2 hover:opacity-90">Restart
+          Game</button>
+        <button id='backToMenuBtn' class="bg-blue-500 text-white w-full rounded-full p-3 mt-2 hover:opacity-90">Back to
+          menu</button>
+      </div>
+    </div>
+
+    <canvas id="mainCanvas"></canvas>
+  </div>
+
+
+
+
+  <!-- MENU SECTION -->
+  <div class="flex justify-center items-center h-screen" id="mainMenu">
+    <canvas id="collisionBalls"></canvas>
+    <div class="fixed flex flex-col border justify-between px-5 py-3 border-cyan-800 w-1/5 gap-3 h-2/5">
+      <p class="menu-title" id="menu-title">Menu</p>
+      <div class="flex flex-col justify-center items-center" id="menuBtns">
+
+        <button class="bg-sky-500 rounded my-2 py-3 w-full text-white font-bold hover:opacity-90"
+          id="gameBtn">Game</button>
+        <button class="bg-sky-500 rounded my-2 py-3 w-full text-white font-bold hover:opacity-90">Info</button>
+        <button class="bg-sky-500 rounded my-2 py-3 w-full text-white font-bold hover:opacity-90">Shop</button>
+      </div>
+      <div class=" flex-col justify-center items-center hidden" id="gameModesBtns">
+        <button class="bg-sky-500 rounded my-2 py-3 w-full text-white font-bold hover:opacity-90"
+          id="startGameBtn">Play</button>
+        <button class="bg-sky-500 rounded my-2 py-3 w-full text-white font-bold hover:opacity-90">Arcade</button>
+        <button class="bg-sky-500 rounded my-2 py-3 w-full text-white font-bold hover:opacity-90"
+          id="backBtn">Back</button>
+      </div>
+
+      <footer class="footer">
+        <audio autoplay="autoplay" loop="true" id='menuMusicPlayer' hidden="true" controls>
+          <source src="./public/menuMusic.mp3" />
+        </audio>
+        <div id="toggleTheme">
+          <i class="indicator"></i>
+        </div>
+        <!-- <button id="changeThemeBtn">Change</button> -->
+        <button id="menuMusicMuteBtn"
+          class="border border-x-purple-200 bg-indigo-300 p-2 w-3/12 text-white rounded hover:opacity-90"><i class="fa fa-volume-high"></i>
+        </button>
+      </footer>
+    </div>
+
+  </div>
+</div>
+
+
+ 
+  <script type="module" src="./main.js"></script>
+  <script type="module" src="./scripts/collisionBalls.js"></script>
+  <script type="module" src="./scripts/menuScript.js"></script>
+</body>
+
+</html>
